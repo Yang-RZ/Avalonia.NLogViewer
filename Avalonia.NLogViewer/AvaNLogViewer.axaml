@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="using:Avalonia.NLogViewer"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Avalonia.NLogViewer.AvaNLogViewer"
+             x:DataType="local:AvaNLogViewer">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <local:AvaNLogViewer />
+    </Design.DataContext>
+
+    <Grid>
+        <Grid.Styles>
+            <Style Selector="#logView DataGridRow">
+                <Setter Property="ToolTip.Tip" Value="{Binding $self.((local:LogEventViewModel)DataContext).ToolTip}" />
+                <Setter Property="Background" Value="{Binding $self.((local:LogEventViewModel)DataContext).Background}" />
+                <Setter Property="Foreground" Value="{Binding $self.((local:LogEventViewModel)DataContext).Foreground}" />
+            </Style>
+            <Style Selector="#logView DataGridRow:selected">
+                <Setter Property="Background" Value="DarkOrange"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+            <Style Selector="#logView DataGridRow:pointerover">
+                <Setter Property="Background" Value="{Binding $self.((local:LogEventViewModel)DataContext).BackgroundMouseOver}"/>
+                <Setter Property="Foreground" Value="{Binding $self.((local:LogEventViewModel)DataContext).ForegroundMouseOver}"/>
+            </Style>
+        </Grid.Styles>
+        <DataGrid ItemsSource="{Binding LogEntries}" Name="logView"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserSortColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Clear" Click="MenuItem_Clear_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="{Binding TimeWidth}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding LoggerName}" Header="Logger" Width="{Binding LoggerNameWidth}"/>
+                <DataGridTextColumn Binding="{Binding Level}" Width="{Binding LevelWidth}">
+                    <DataGridTextColumn.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Level" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FormattedMessage}"  Header="Message"
+                            Width="{Binding !$parent[UserControl;2].((local:AvaNLogViewer)DataContext).MessageWidth}"
+                            x:DataType="local:LogEventViewModel"
+                                    >
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Exception}" Header="Exception" Width="{Binding ExceptionWidth}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

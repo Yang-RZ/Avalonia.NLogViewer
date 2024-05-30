@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <AvaloniaVersion>11.0.10</AvaloniaVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+      
+    <TargetFramework>net7.0</TargetFramework>
+    <!-- <Platforms>x64</Platforms> -->
+    <LangVersion>latest</LangVersion>
+  
+    <IntermediateOutputPath>$(SolutionDir)build</IntermediateOutputPath>
+    <BaseOutputPath>$(SolutionDir)build</BaseOutputPath>
+  </PropertyGroup>
+</Project>
