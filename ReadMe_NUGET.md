@@ -4,5 +4,4 @@ Inspired by https://github.com/erizet/NlogViewer, a viewer for WPF. I modified i
 
 An improvement is that now it can display more than 100K messages per second.
 
-Below is a demonstration:
-![Example](screenshots/Avalonia.NLogViewer.Demo.gif)
+Check more information here: https://github.com/Yang-RZ/Avalonia.NLogViewer

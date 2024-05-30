@@ -454,3 +454,5 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 build/
+.gitattributes
+.vscode/settings.json
