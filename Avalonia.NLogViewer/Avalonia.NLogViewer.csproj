@@ -13,6 +13,11 @@
       <RepositoryType></RepositoryType>
       <PackageTags>Avalonia;NLog;NLogViewer;AvaloniaControls</PackageTags>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <PackRelease>true</PackRelease>
+      <VersionPrefix>1.0.1</VersionPrefix>
+      <AssemblyVersion>1.0.0.1</AssemblyVersion>
+      <FileVersion>1.0.0.1</FileVersion>
+      <PackageReleaseNotes>Change configuration from Debug to Release</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\ReadMe_NUGET.md">
@@ -23,6 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" />
     <PackageReference Include="Avalonia.Themes.Fluent" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <PackageReference Include="Avalonia.ReactiveUI" />
